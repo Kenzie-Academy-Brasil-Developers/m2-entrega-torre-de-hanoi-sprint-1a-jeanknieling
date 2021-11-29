@@ -1,0 +1,30 @@
+#bloco1 {
+    display: block;
+    background-color: red;
+    width: 50px;
+    height: 80px;
+}
+#bloco2 {
+    display: block;
+    background-color: blue;
+    width: 50px;
+    height: 80px;
+}
+#bloco3 {
+    display: block;
+    background-color: yellowgreen;
+    width: 50px;
+    height: 80px;
+}
+#bloco4 {
+    display: block;
+    background-color: purple;
+    width: 50px;
+    height: 80px;
+}
+#bloco5 {
+    display: block;
+    background-color: orange;
+    width: 50px;
+    height: 80px;
+}
