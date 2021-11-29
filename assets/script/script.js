@@ -1,3 +1,4 @@
+const musica = document.getElementById('musica');
 function criarEstruturaHTML() {
     const main = document.querySelector('.container');
     const section = document.createElement('section');
@@ -18,7 +19,6 @@ function criarEstruturaHTML() {
 }
 criarEstruturaHTML();
 const sectionContainer = document.querySelector('.sectionContainer');
-console.log(sectionContainer)
 function criarBlocos(numeroDeBlocos) {
     for(let i = 0; i < numeroDeBlocos; i++) {
         let blocos = document.createElement('span');
@@ -26,4 +26,19 @@ function criarBlocos(numeroDeBlocos) {
         sectionContainer.appendChild(blocos);
     }
 }
+
+function criarToco(){
+    for(let i = 0; i < 4; i++) {
+        let blocos = document.createElement('div');
+        blocos.id = `toco${i + 1}`;
+        sectionContainer.appendChild(blocos);
+    }
+}
+
+
+musica.play()
+criarToco();
 criarBlocos(5);
+  
+
+    

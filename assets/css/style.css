@@ -1,30 +1,87 @@
+html {
+    min-height: 100%;
+    background-image: url("../img/wallpaper.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+body{
+    display: flex;
+    justify-content: center;
+   
+}
+
+p{
+    color: rgb(255, 166, 0);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sectionContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: red;
+}
+
+div{
+   
+}
 #bloco1 {
     display: block;
     background-color: red;
     width: 50px;
-    height: 80px;
+    height: 40px;
+    border-radius: 8px;
 }
 #bloco2 {
     display: block;
     background-color: blue;
-    width: 50px;
-    height: 80px;
+    width: 100px;
+
+    height: 40px;
+    border-radius: 8px;
 }
 #bloco3 {
     display: block;
     background-color: yellowgreen;
-    width: 50px;
-    height: 80px;
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
 }
 #bloco4 {
     display: block;
     background-color: purple;
-    width: 50px;
-    height: 80px;
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
 }
 #bloco5 {
     display: block;
     background-color: orange;
-    width: 50px;
-    height: 80px;
+   
+    width: 250px;
+    height: 40px;
+    border-radius: 8px;
+}
+#toco1{
+    width: 10px;
+    height: 50px;
+    background-color: rgb(114, 67, 5);
+}
+#toco2{
+    width: 10px;
+    height: 50px;
+    background-color: rgb(114, 67, 5);
+}
+#toco3{
+    width: 10px;
+    height: 50px;
+    background-color: rgb(114, 67, 5);
+}
+button{
+    width: 80px;
+    height: 30px;
 }
