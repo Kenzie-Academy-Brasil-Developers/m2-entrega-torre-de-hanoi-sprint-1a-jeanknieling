@@ -10,6 +10,7 @@ function criarEstruturaHTML() {
     pContadorJogadas.innerHTML = 'Quantidade mínima de movimentos: ';
     const pQtdMinJogadas = document.createElement('p');
     pQtdMinJogadas.innerHTML = 'Movimentos efetuados: ';
+    
     section.appendChild(resetButton);
     section.appendChild(pQtdMinJogadas);
     section.appendChild(pContadorJogadas);
@@ -17,8 +18,8 @@ function criarEstruturaHTML() {
     document.body.appendChild(main);
 }
 criarEstruturaHTML();
+
 const sectionContainer = document.querySelector('.sectionContainer');
-console.log(sectionContainer)
 function criarBlocos(numeroDeBlocos) {
     for(let i = 0; i < numeroDeBlocos; i++) {
         let blocos = document.createElement('span');
@@ -27,3 +28,11 @@ function criarBlocos(numeroDeBlocos) {
     }
 }
 criarBlocos(5);
+const
+function capturaClick(event) {
+    for(let i = 0; i < numeroDeBlocos; i++) {
+        let blocos = document.createElement('span');
+        blocos.id = `bloco${i + 1}`;
+        sectionContainer.appendChild(blocos);
+    }
+}
