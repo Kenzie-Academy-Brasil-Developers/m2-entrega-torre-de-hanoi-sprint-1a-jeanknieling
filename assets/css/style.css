@@ -6,10 +6,12 @@ html {
     background-position: center center;
 
 }
-body{
+main{
+    width: 800px;
     display: flex;
-    justify-content: center;
-   
+    align-items: center;
+    justify-content: space-around;
+    
 }
 
 p{
@@ -23,12 +25,8 @@ p{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: red;
 }
 
-div{
-   
-}
 #bloco1 {
     display: block;
     background-color: red;
@@ -40,7 +38,6 @@ div{
     display: block;
     background-color: blue;
     width: 100px;
-
     height: 40px;
     border-radius: 8px;
 }
@@ -67,19 +64,28 @@ div{
     border-radius: 8px;
 }
 #toco1{
+   
+    position: absolute;
     width: 10px;
-    height: 50px;
+    height: 200px;
     background-color: rgb(114, 67, 5);
+    
 }
 #toco2{
+   
+    position: absolute;
     width: 10px;
-    height: 50px;
+    height: 200px;
     background-color: rgb(114, 67, 5);
+   
 }
 #toco3{
+   
+    position: absolute;
     width: 10px;
-    height: 50px;
+    height: 200px;
     background-color: rgb(114, 67, 5);
+   
 }
 button{
     width: 80px;
