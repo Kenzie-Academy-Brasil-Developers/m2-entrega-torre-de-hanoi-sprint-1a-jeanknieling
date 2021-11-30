@@ -1,30 +1,117 @@
+html {
+    min-height: 100%;
+    background-image: url("../img/wallpaper.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+body{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+main{
+    margin-top: 20px;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+p{
+    color: rgb(255, 166, 0);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sectionContainer, .sectionContainer2, .sectionContainer3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #bloco1 {
     display: block;
     background-color: red;
     width: 50px;
-    height: 80px;
+    height: 40px;
+    border-radius: 8px;
 }
 #bloco2 {
     display: block;
     background-color: blue;
-    width: 50px;
-    height: 80px;
+    width: 100px;
+    height: 40px;
+    border-radius: 8px;
 }
 #bloco3 {
     display: block;
     background-color: yellowgreen;
-    width: 50px;
-    height: 80px;
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
 }
 #bloco4 {
     display: block;
     background-color: purple;
-    width: 50px;
-    height: 80px;
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
 }
 #bloco5 {
     display: block;
     background-color: orange;
-    width: 50px;
-    height: 80px;
+   
+    width: 250px;
+    height: 40px;
+    border-radius: 8px;
+}
+#bloco1, #bloco2, #bloco3, #bloco4, #bloco5 {
+    z-index: 1;
+}
+#toco1{
+   
+    width: 10px;
+    height: 220px;
+    background-color: rgb(114, 67, 5);
+    
+}
+#toco2{
+   
+    width: 10px;
+    height: 220px;
+    background-color: rgb(114, 67, 5);
+   
+}
+#toco3{
+   
+    width: 10px;
+    height: 220px;
+    background-color: rgb(114, 67, 5);
+   
+}
+
+#toco1, #toco2, #toco3 {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+button{
+    color: white;
+    transition: 0.4s;
+    width: 80px;
+    height: 30px;
+    background-color: rgb(255, 166, 0);
+    border: none;
+    border-radius: 3px;
+}
+button:hover{
+    background-color: rgb(90, 67, 22);
+    transition: 0.4s;
 }
