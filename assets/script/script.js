@@ -15,13 +15,16 @@ function criarEstruturaHTML() {
     pContadorJogadas.innerHTML = 'Quantidade mínima de movimentos: ';
     const pQtdMinJogadas = document.createElement('p');
     pQtdMinJogadas.innerHTML = 'Movimentos efetuados: ';
-    document.body.appendChild(resetButton);
     document.body.appendChild(pQtdMinJogadas);
     document.body.appendChild(pContadorJogadas);
+    
     main.appendChild(section);
     main.appendChild(section2);
     main.appendChild(section3);
+  
     document.body.appendChild(main);
+    document.body.appendChild(resetButton);
+    resetButton.addEventListener("click", resete);
 }
 criarEstruturaHTML();
 const sectionContainer = document.querySelector('.sectionContainer');
@@ -52,10 +55,50 @@ function criarToco(){
 
 musica.play()
 criarToco()
-criarBlocos(5);
 
 
 
-  
+function popupvitoria(){
+    const vitoria = document.createElement('p');
+   vitoria.innerHTML = 'Parabéns você venceu!';
+    document.body.appendChild(vitoria);
+}
 
-    
+function selecaodejogos(){
+    const main = document.querySelector('.container');
+    const opDeJogo = document.createElement('p');
+    opDeJogo.innerHTML = 'Dificuldades:';
+    main.appendChild(opDeJogo);
+    const easyButton = document.createElement('button');
+    easyButton.innerHTML = 'Gennin';
+    easyButton.id = 3;
+    main.appendChild(easyButton);
+    const mediumButton = document.createElement('button');
+    mediumButton.innerHTML = 'Chunnin';
+    mediumButton.id = 4;
+    main.appendChild(mediumButton);
+    const hardButton = document.createElement('button');
+    hardButton.innerHTML = 'Jonnin';
+    hardButton.id = 5;
+    main.appendChild(hardButton);
+
+
+    easyButton.addEventListener("click", trocamodal)
+    mediumButton.addEventListener("click", trocamodal)
+    hardButton.addEventListener("click", trocamodal)
+
+    function trocamodal(){
+        sectionContainer.style.display = "flex";
+        sectionContainer2.style.display = "flex";
+        sectionContainer3.style.display = "flex";
+        opDeJogo.style.display = "none";
+        easyButton.style.display = "none";
+        mediumButton.style.display = "none";
+        hardButton.style.display = "none";
+        criarBlocos(event.target.id)
+    }
+}
+selecaodejogos()
+function resete(){
+    location.reload();
+}
