@@ -3,14 +3,24 @@ html {
     background-image: url("../img/wallpaper.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 body{
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+h1{
+    color: rgb(255, 166, 0);
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
 }
 main{
     background-color: rgba(0, 0, 0, 0.548);
@@ -19,16 +29,17 @@ main{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 p{
     color: rgb(255, 166, 0);
     font-size: 20px;
     font-weight: bold;
-    margin-left: 20px;
+    text-align: center;
 }
 .sectionContainer, .sectionContainer2, .sectionContainer3{
     width: 100px;
+    margin: 0 20px;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -47,35 +58,16 @@ p{
 .flex{
     display: flex;
 }
-/* #toco1{
-    position: absolute;
-    width: 10px;
-    height: 110px;
-    background-color: rgb(114, 67, 5); 
-}
-#toco2{
-    position: absolute;
-    width: 10px;
-    height: 110px;
-    background-color: rgb(114, 67, 5);
-}
-#toco3{
-    position: absolute;
-    width: 10px;
-    height: 110px;
-    background-color: rgb(114, 67, 5); 
-}*/
 #bloco1 {
     border: 1px solid rgb(255, 255, 255);
     display: block;
     background-color: red;
-    width: 25px;
+    width: 22px;
     height: 20px;
-    border-radius: 8px;
-    
+    border-radius: 6px;
 }
-.bloco1 {
-    animation: change 0.8s infinite;
+.keyframes{
+    animation: change 1s infinite;
 }
 @keyframes change {
     0% { width: 20px; }
@@ -86,8 +78,11 @@ p{
     border: 1px solid rgb(255, 255, 255);
     display: block;
     background-color: blue;
+    width: 40px;
     height: 20px;
     border-radius: 8px;
+}
+.keyframes2{
     animation: change2 1s infinite;
 }
 @keyframes change2 {
@@ -99,9 +94,12 @@ p{
     border: 1px solid rgb(255, 255, 255);
     display: block;
     background-color: yellowgreen;
+    width: 60px;
     height: 20px;
     border-radius: 8px;
-    animation: change3 1.2s infinite;
+}
+.keyframes3{
+    animation: change3 1s infinite;
 }
 @keyframes change3 {
     0% { width: 60px; }
@@ -112,9 +110,12 @@ p{
     border: 1px solid rgb(255, 255, 255);
     display: block;
     background-color: purple;
+    width: 80px;
     height: 20px;
     border-radius: 8px;
-    animation: change4 1.4s infinite;
+}
+.keyframes4{
+    animation: change4 1s infinite;
 }
 @keyframes change4 {
     0% { width: 80px; }
@@ -125,42 +126,43 @@ p{
     border: 1px solid rgb(255, 255, 255);
     display: block;
     background-color: orange;
+    width: 100px;
     height: 20px;
     border-radius: 8px;
-    animation: change5 1.5s infinite;
+}
+.keyframes5{
+    animation: change5 1s infinite;
+}
+@keyframes change5 {
+    0% { width: 100px; }
+    50% {  width: 105px; }
+    100% {  width: 100px; }
 }
 #bloco1, #bloco2, #bloco3, #bloco4, #bloco5 {
     z-index: 1;
 }
 #toco1{
-   
     width: 10px;
     height: 110px;
     background-color: rgb(114, 67, 5);
-    
 }
 #toco2{
-   
     width: 10px;
     height: 110px;
     background-color: rgb(114, 67, 5);
-   
 }
 #toco3{
-   
     width: 10px;
     height: 110px;
     background-color: rgb(114, 67, 5);
    
 }
-
 #toco1, #toco2, #toco3 {
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-start;
     align-items: center;
 }
-
 button{
     margin-top: 30px;
     color: white;
@@ -177,10 +179,21 @@ button:hover{
 }
 @media (min-width: 600px) {
     main{
-        width: 600px;
+        width: 800px;
         height: 300px;
+        
+    }
+    .texto{
+        flex-direction: column;
+        justify-content: center;
     }
     p{
         margin-left: 0;
+    }
+    .menu{
+        flex-direction: row;
+    }
+    .menu button{
+        margin: 10px;
     }
 }
