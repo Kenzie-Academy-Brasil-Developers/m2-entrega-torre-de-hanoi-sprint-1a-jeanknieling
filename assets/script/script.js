@@ -59,32 +59,29 @@ function criarBlocos(numeroDeBlocos) {
         pContadorJogadas.innerHTML = 'Quantidade mínima de movimentos: 31';
     }
 }
+
 let blocoSelecionado = "";
+let counter = 0;
 function capturarBlocos(event) {
     blocoSelecionado = event.currentTarget.querySelector('div').lastElementChild;
     const efeitoMover = blocoSelecionado.id;
-    if ( efeitoMover === "bloco1"){
-        blocoSelecionado.classList.add("keyframes");
-        console.log(blocoSelecionado)
-    }else if (efeitoMover == "bloco2"){
-        blocoSelecionado.classList.add("keyframes2");
-    }else if (efeitoMover == "bloco3"){
-        blocoSelecionado.classList.add("keyframes3");
-    }else if (efeitoMover == "bloco4"){
-        blocoSelecionado.classList.add("keyframes4");
-    }else if (efeitoMover == "bloco5"){
-        blocoSelecionado.classList.add("keyframes5");
-    }
+   if(blocoSelecionado.class !== ""){
+        if ( efeitoMover === "bloco1"){
+        blocoSelecionado.classList.toggle("keyframes");
+       
+   }else{
+        blocoSelecionado.classList.remove("keyframes");
+   }
+   counter++;
+   console.log(counter);
+}
 }
 sectionContainer.addEventListener('click', capturarBlocos);
 sectionContainer2.addEventListener('click', capturarBlocos);
 sectionContainer3.addEventListener('click', capturarBlocos);
 let torreSelecionada = "";
 function capturarTorres(event) {
-    
-    blocoSelecionado.classList.remove("keyframes")
-    console.log(blocoSelecionado)
-        
+   
     if(event.target.tagName === "DIV" && blocoSelecionado !== "") {
         torreSelecionada = event.target;
         moveBlocos();
@@ -99,8 +96,13 @@ const torre3 = document.querySelector('#toco3');
 torre3.addEventListener('click', capturarTorres);
 let movimentos = 0;
 function moveBlocos() {
+    
     if(torreSelecionada.lastElementChild === null || torreSelecionada.lastElementChild.clientWidth > blocoSelecionado.clientWidth) {
         torreSelecionada.appendChild(blocoSelecionado);
+        torreSelecionada.lastElementChild.classList.remove("keyframes")
+        torreSelecionada.lastElementChild.style.backgroundColor = "green";
+        //console.log(blocoSelecionado)
+       // blocoSelecionado.classList.remove("keyframes")
         contarMovimentos();
     } else {
         erro.play();
