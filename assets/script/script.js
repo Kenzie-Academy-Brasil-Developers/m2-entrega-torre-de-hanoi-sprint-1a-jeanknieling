@@ -72,6 +72,7 @@ function selecaodejogos(){
     mediumButton.addEventListener("click", trocamodal);
     hardButton.addEventListener("click", trocamodal);
     function trocamodal(){
+        musica.play()
         sectionContainer.classList.add('flex');
         sectionContainer2.classList.add('flex');
         sectionContainer3.classList.add('flex');
@@ -91,6 +92,5 @@ function popupvitoria(){
 function resete(){
     location.reload();
 }
-//musica.play()
 //erro.play()
 //popupvitoria()
