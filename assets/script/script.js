@@ -1,4 +1,5 @@
 //const musica = document.getElementById('musica');
+const erro = document.getElementById('erro');
 function criarEstruturaHTML() {
     const main = document.querySelector('.container');
     const section = document.createElement('section');
@@ -29,7 +30,6 @@ function criarEstruturaHTML() {
     main.appendChild(section);
     main.appendChild(section2);
     main.appendChild(section3);
-  
     document.body.appendChild(main);
     document.body.appendChild(resetButton);
     resetButton.addEventListener("click", resete);
@@ -61,13 +61,12 @@ function criarBlocos(numeroDeBlocos) {
         primeiraTorre.appendChild(blocos);
     }
 }
-//criarBlocos(5);
-musica.play();
 
 let blocoSelecionado = "";
-console.log(blocoSelecionado)
 function capturarBlocos(event) {
     blocoSelecionado = event.currentTarget.querySelector('div').lastElementChild;
+
+    console.log(blocoSelecionado)
    
 }
 sectionContainer.addEventListener('click', capturarBlocos);
@@ -76,7 +75,6 @@ sectionContainer3.addEventListener('click', capturarBlocos);
 
 let torreSelecionada = "";
 function capturarTorres(event) {
-    console.log(event.target.tagName === "DIV" && blocoSelecionado !== "")
     if(event.target.tagName === "DIV" && blocoSelecionado !== "") {
         torreSelecionada = event.target;
         moveBlocos()
@@ -94,6 +92,8 @@ function moveBlocos() {
     if(torreSelecionada.lastElementChild === null || torreSelecionada.lastElementChild.clientWidth > blocoSelecionado.clientWidth) {
         torreSelecionada.appendChild(blocoSelecionado);
         contarMovimentos();
+    } else {
+        erro.play();
     }
 }
 
@@ -103,8 +103,6 @@ function contarMovimentos() {
     pContadorMovimentos.innerHTML = `Movimentos efetuados: ${movimentos}`;
 }
 
-//musica.play()
-
 function popupvitoria(){
     const vitoria = document.createElement('p');
    vitoria.innerHTML = 'Parabéns você venceu!';
@@ -112,39 +110,48 @@ function popupvitoria(){
 }
 
 function selecaodejogos(){
+    const butoes = document.createElement('div');
+    butoes.classList.add('menu');
     const main = document.querySelector('.container');
     const opDeJogo = document.createElement('p');
     opDeJogo.innerHTML = 'Dificuldades:';
-    main.appendChild(opDeJogo);
+    butoes.appendChild(opDeJogo);
     const easyButton = document.createElement('button');
     easyButton.innerHTML = 'Gennin';
     easyButton.id = 3;
-    main.appendChild(easyButton);
+    butoes.appendChild(easyButton);
     const mediumButton = document.createElement('button');
     mediumButton.innerHTML = 'Chunnin';
     mediumButton.id = 4;
-    main.appendChild(mediumButton);
+    butoes.appendChild(mediumButton);
     const hardButton = document.createElement('button');
     hardButton.innerHTML = 'Jonnin';
     hardButton.id = 5;
-    main.appendChild(hardButton);
-
-    easyButton.addEventListener("click", trocamodal)
-    mediumButton.addEventListener("click", trocamodal)
-    hardButton.addEventListener("click", trocamodal)
-
-    function trocamodal(event){
-        sectionContainer.style.display = "flex";
-        sectionContainer2.style.display = "flex";
-        sectionContainer3.style.display = "flex";
-        opDeJogo.style.display = "none";
-        easyButton.style.display = "none";
-        mediumButton.style.display = "none";
-        hardButton.style.display = "none";
+    butoes.appendChild(hardButton);
+    main.appendChild(butoes);
+    easyButton.addEventListener("click", trocamodal);
+    mediumButton.addEventListener("click", trocamodal);
+    hardButton.addEventListener("click", trocamodal);
+    
+    function trocamodal(){
+        sectionContainer.classList.add('flex');
+        sectionContainer2.classList.add('flex');
+        sectionContainer3.classList.add('flex');
+        opDeJogo.classList.add('none');
+        easyButton.classList.add('none');
+        mediumButton.classList.add('none');
+        hardButton.classList.add('none');
         criarBlocos(event.target.id);
+        //musica.play()
     }
 }
 selecaodejogos()
+function popupvitoria(){
+    const vitoria = document.createElement('p');
+   vitoria.innerHTML = 'Parabéns você venceu!';
+    document.body.appendChild(vitoria);
+}
 function resete(){
     location.reload();
 }
+//popupvitoria()
