@@ -13,26 +13,24 @@ function criarEstruturaHTML() {
     const resetButton = document.createElement('button');
     resetButton.innerHTML = 'Reset';
     const pContadorJogadas = document.createElement('p');
-    pContadorJogadas.innerHTML = 'Quantidade mínima de movimentos: ';
+    pContadorJogadas.id = 'contador-jogadas';
+    pContadorJogadas.innerHTML = 'Movimentos efetuados: 0';
     const pQtdMinJogadas = document.createElement('p');
-    pQtdMinJogadas.id = 'contador-jogadas';
-    pQtdMinJogadas.innerText = 'Movimentos efetuados: 0';
+    pQtdMinJogadas.innerText = 'Quantidade mínima de movimentos: 0';
+    pQtdMinJogadas.id = 'min-jogadas';
     
     section.appendChild(resetButton);
-    section.appendChild(pQtdMinJogadas);
     section.appendChild(pContadorJogadas);
+    section.appendChild(pQtdMinJogadas);
     main.appendChild(section);
     main.appendChild(section2);
     main.appendChild(section3);
+    resetButton.addEventListener("click", resete);
     document.body.appendChild(resetButton);
-    document.body.appendChild(pQtdMinJogadas);
     document.body.appendChild(pContadorJogadas);
-    main.appendChild(section);
-    main.appendChild(section2);
-    main.appendChild(section3);
+    document.body.appendChild(pQtdMinJogadas);
     document.body.appendChild(main);
     document.body.appendChild(resetButton);
-    resetButton.addEventListener("click", resete);
 }
 criarEstruturaHTML();
 
@@ -55,19 +53,25 @@ criarToco()
 
 const primeiraTorre = document.querySelector('#toco1');
 function criarBlocos(numeroDeBlocos) {
+    const pQntMinJogadas = document.querySelector('min-jogadas');
     for(let i = numeroDeBlocos; i > 0 ; i--) {
         let blocos = document.createElement('span');
         blocos.id = `bloco${i}`;
         primeiraTorre.appendChild(blocos);
+    }
+
+    if(numeroDeBlocos === 3) {
+        pQntMinJogadas.innerHTML = 'Quantidade mínima de movimentos: 7';
+    } else if(numeroDeBlocos === 4) {
+        pQntMinJogadas.innerHTML = 'Quantidade mínima de movimentos: 15';
+    } else {
+        pQntMinJogadas.innerHTML = 'Quantidade mínima de movimentos: 31';
     }
 }
 
 let blocoSelecionado = "";
 function capturarBlocos(event) {
     blocoSelecionado = event.currentTarget.querySelector('div').lastElementChild;
-
-    console.log(blocoSelecionado)
-   
 }
 sectionContainer.addEventListener('click', capturarBlocos);
 sectionContainer2.addEventListener('click', capturarBlocos);
@@ -77,7 +81,8 @@ let torreSelecionada = "";
 function capturarTorres(event) {
     if(event.target.tagName === "DIV" && blocoSelecionado !== "") {
         torreSelecionada = event.target;
-        moveBlocos()
+        moveBlocos();
+        verificarVitoria(event);
     }
 }
 const torre1 = document.querySelector('#toco1');
@@ -101,6 +106,18 @@ function contarMovimentos() {
     movimentos++;
     const pContadorMovimentos = document.querySelector('#contador-jogadas');
     pContadorMovimentos.innerHTML = `Movimentos efetuados: ${movimentos}`;
+}
+
+function verificarVitoria(event) {
+    const contaElementosNaTorre = event.currentTarget.childElementCount;
+    console.log(contaElementosNaTorre === 3 && (event.currentTarget.id === 'toco2' || event.currentTarget.id === 'toco3'))
+    console.log(contaElementosNaTorre)
+    if(contaElementosNaTorre === 3 && (event.currentTarget.id === 'toco2' || event.currentTarget.id === 'toco3')) {
+        popupvitoria();
+        console.log(torre1.removeEventListener('click', capturarTorres));
+        torre2.removeEventListener('click', capturarTorres);
+        torre3.removeEventListener('click', capturarTorres);
+    }
 }
 
 function popupvitoria(){
@@ -154,4 +171,3 @@ function popupvitoria(){
 function resete(){
     location.reload();
 }
-//popupvitoria()
