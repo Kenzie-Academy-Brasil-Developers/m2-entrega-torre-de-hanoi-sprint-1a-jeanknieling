@@ -47,7 +47,7 @@ p{
 .flex{
     display: flex;
 }
-#toco1{
+/* #toco1{
     position: absolute;
     width: 10px;
     height: 110px;
@@ -63,15 +63,18 @@ p{
     position: absolute;
     width: 10px;
     height: 110px;
-    background-color: rgb(114, 67, 5);
-}
+    background-color: rgb(114, 67, 5); 
+}*/
 #bloco1 {
     border: 1px solid rgb(255, 255, 255);
     display: block;
     background-color: red;
-    
+    width: 25px;
     height: 20px;
     border-radius: 8px;
+    
+}
+.bloco1 {
     animation: change 0.8s infinite;
 }
 @keyframes change {
@@ -126,11 +129,38 @@ p{
     border-radius: 8px;
     animation: change5 1.5s infinite;
 }
-@keyframes change5 {
-    0% { width: 100px; }
-    50% {  width: 105px; }
-    100% {  width: 100px; }
+#bloco1, #bloco2, #bloco3, #bloco4, #bloco5 {
+    z-index: 1;
 }
+#toco1{
+   
+    width: 10px;
+    height: 110px;
+    background-color: rgb(114, 67, 5);
+    
+}
+#toco2{
+   
+    width: 10px;
+    height: 110px;
+    background-color: rgb(114, 67, 5);
+   
+}
+#toco3{
+   
+    width: 10px;
+    height: 110px;
+    background-color: rgb(114, 67, 5);
+   
+}
+
+#toco1, #toco2, #toco3 {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 button{
     margin-top: 30px;
     color: white;
