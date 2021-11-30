@@ -1,4 +1,4 @@
-const musica = document.getElementById('musica');
+//const musica = document.getElementById('musica');
 function criarEstruturaHTML() {
     const main = document.querySelector('.container');
     const section = document.createElement('section');
@@ -14,7 +14,8 @@ function criarEstruturaHTML() {
     const pContadorJogadas = document.createElement('p');
     pContadorJogadas.innerHTML = 'Quantidade mínima de movimentos: ';
     const pQtdMinJogadas = document.createElement('p');
-    pQtdMinJogadas.innerHTML = 'Movimentos efetuados: ';
+    pQtdMinJogadas.id = 'contador-jogadas';
+    pQtdMinJogadas.innerText = 'Movimentos efetuados: 0';
     
     section.appendChild(resetButton);
     section.appendChild(pQtdMinJogadas);
@@ -25,7 +26,13 @@ function criarEstruturaHTML() {
     document.body.appendChild(resetButton);
     document.body.appendChild(pQtdMinJogadas);
     document.body.appendChild(pContadorJogadas);
+    main.appendChild(section);
+    main.appendChild(section2);
+    main.appendChild(section3);
+  
     document.body.appendChild(main);
+    document.body.appendChild(resetButton);
+    resetButton.addEventListener("click", resete);
 }
 criarEstruturaHTML();
 
@@ -54,14 +61,13 @@ function criarBlocos(numeroDeBlocos) {
         primeiraTorre.appendChild(blocos);
     }
 }
-criarBlocos(5);
+//criarBlocos(5);
 musica.play();
 
 let blocoSelecionado = "";
 console.log(blocoSelecionado)
 function capturarBlocos(event) {
-        blocoSelecionado = event.currentTarget.querySelector('div').lastElementChild;
-        console.log(blocoSelecionado)
+    blocoSelecionado = event.currentTarget.querySelector('div').lastElementChild;
    
 }
 sectionContainer.addEventListener('click', capturarBlocos);
@@ -73,7 +79,6 @@ function capturarTorres(event) {
     console.log(event.target.tagName === "DIV" && blocoSelecionado !== "")
     if(event.target.tagName === "DIV" && blocoSelecionado !== "") {
         torreSelecionada = event.target;
-        console.log(torreSelecionada)
         moveBlocos()
     }
 }
@@ -83,11 +88,63 @@ const torre2 = document.querySelector('#toco2');
 torre2.addEventListener('click', capturarTorres);
 const torre3 = document.querySelector('#toco3');
 torre3.addEventListener('click', capturarTorres);
-    
 
+let movimentos = 0;
 function moveBlocos() {
     if(torreSelecionada.lastElementChild === null || torreSelecionada.lastElementChild.clientWidth > blocoSelecionado.clientWidth) {
         torreSelecionada.appendChild(blocoSelecionado);
+        contarMovimentos();
     }
 }
 
+function contarMovimentos() {
+    movimentos++;
+    const pContadorMovimentos = document.querySelector('#contador-jogadas');
+    pContadorMovimentos.innerHTML = `Movimentos efetuados: ${movimentos}`;
+}
+
+//musica.play()
+
+function popupvitoria(){
+    const vitoria = document.createElement('p');
+   vitoria.innerHTML = 'Parabéns você venceu!';
+    document.body.appendChild(vitoria);
+}
+
+function selecaodejogos(){
+    const main = document.querySelector('.container');
+    const opDeJogo = document.createElement('p');
+    opDeJogo.innerHTML = 'Dificuldades:';
+    main.appendChild(opDeJogo);
+    const easyButton = document.createElement('button');
+    easyButton.innerHTML = 'Gennin';
+    easyButton.id = 3;
+    main.appendChild(easyButton);
+    const mediumButton = document.createElement('button');
+    mediumButton.innerHTML = 'Chunnin';
+    mediumButton.id = 4;
+    main.appendChild(mediumButton);
+    const hardButton = document.createElement('button');
+    hardButton.innerHTML = 'Jonnin';
+    hardButton.id = 5;
+    main.appendChild(hardButton);
+
+    easyButton.addEventListener("click", trocamodal)
+    mediumButton.addEventListener("click", trocamodal)
+    hardButton.addEventListener("click", trocamodal)
+
+    function trocamodal(event){
+        sectionContainer.style.display = "flex";
+        sectionContainer2.style.display = "flex";
+        sectionContainer3.style.display = "flex";
+        opDeJogo.style.display = "none";
+        easyButton.style.display = "none";
+        mediumButton.style.display = "none";
+        hardButton.style.display = "none";
+        criarBlocos(event.target.id);
+    }
+}
+selecaodejogos()
+function resete(){
+    location.reload();
+}

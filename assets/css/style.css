@@ -4,7 +4,8 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-
+   
+     
 }
 body{
     margin-top: 20px;
@@ -14,9 +15,12 @@ body{
     align-items: center;
 }
 main{
+    background-color: rgba(0, 0, 0, 0.548);
     margin-top: 20px;
-    width: 800px;
+    height: 600px;
+    width: 300px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     
@@ -26,10 +30,13 @@ p{
     color: rgb(255, 166, 0);
     font-size: 20px;
     font-weight: bold;
+    margin-left: 20px;
 }
 
-.sectionContainer, .sectionContainer2, .sectionContainer3 {
-    display: flex;
+.sectionContainer, .sectionContainer2, .sectionContainer3{
+    margin: 5px;
+    display: none;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -37,37 +44,37 @@ p{
 #bloco1 {
     display: block;
     background-color: red;
-    width: 50px;
-    height: 40px;
+    width:40px;
+    height: 20px;
     border-radius: 8px;
 }
 #bloco2 {
     display: block;
     background-color: blue;
-    width: 100px;
-    height: 40px;
+    width: 60px;
+    height: 20px;
     border-radius: 8px;
 }
 #bloco3 {
     display: block;
     background-color: yellowgreen;
-    width: 150px;
-    height: 40px;
+    width: 80px;
+    height: 20px;
     border-radius: 8px;
 }
 #bloco4 {
     display: block;
     background-color: purple;
-    width: 200px;
-    height: 40px;
+    width: 100px;
+    height: 20px;
     border-radius: 8px;
 }
 #bloco5 {
     display: block;
     background-color: orange;
    
-    width: 250px;
-    height: 40px;
+    width: 120px;
+    height: 20px;
     border-radius: 8px;
 }
 #bloco1, #bloco2, #bloco3, #bloco4, #bloco5 {
@@ -76,21 +83,21 @@ p{
 #toco1{
    
     width: 10px;
-    height: 220px;
+    height: 110px;
     background-color: rgb(114, 67, 5);
     
 }
 #toco2{
    
     width: 10px;
-    height: 220px;
+    height: 110px;
     background-color: rgb(114, 67, 5);
    
 }
 #toco3{
    
     width: 10px;
-    height: 220px;
+    height: 110px;
     background-color: rgb(114, 67, 5);
    
 }
@@ -103,6 +110,7 @@ p{
 }
 
 button{
+    margin-top: 30px;
     color: white;
     transition: 0.4s;
     width: 80px;
@@ -114,4 +122,18 @@ button{
 button:hover{
     background-color: rgb(90, 67, 22);
     transition: 0.4s;
+}
+
+@media (min-width: 600px) {
+    main{
+        background-color: rgba(0, 0, 0, 0.548);
+        margin-top: 20px;
+        width: 600px;
+        height: 300px;
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        
+    }
 }
