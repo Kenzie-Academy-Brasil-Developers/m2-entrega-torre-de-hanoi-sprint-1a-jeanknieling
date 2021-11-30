@@ -91,8 +91,6 @@ function popupvitoria(){
 function resete(){
     location.reload();
 }
-
-//popupvitoria()
-
 //musica.play()
 //erro.play()
+//popupvitoria()
