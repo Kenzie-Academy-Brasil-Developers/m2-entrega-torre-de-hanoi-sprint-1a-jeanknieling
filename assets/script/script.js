@@ -1,3 +1,4 @@
+//let contador = 1;
 function criarEstruturaHTML() {
     const main = document.querySelector('.container');
     const section = document.createElement('section');
@@ -167,9 +168,13 @@ console.log("dentro: "+event.target)
     if(contaElementosNaTorre === 3 && (event.currentTarget.id === 'toco2' || event.currentTarget.id === 'toco3')) {
         popupvitoria();
         
+       // if (contador===1){
+    
        torre1.removeEventListener('click', capturarTorres);
         torre2.removeEventListener('click', capturarTorres);
         torre3.removeEventListener('click', capturarTorres);
+                
+    //}
     }
 }
 
