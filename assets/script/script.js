@@ -31,35 +31,71 @@ function criarToco(){
     sectionContainer2.appendChild(toco2);
     sectionContainer3.appendChild(toco3);
 }
+let contador = 0;
 criarToco()
 const primeiraTorre = document.querySelector('#toco1');
 function criarBlocos(numeroDeBlocos) {
 
     const pContadorJogadas = document.createElement('p');
-    
-    const pQtdMinJogadas = document.createElement('p');
-    pQtdMinJogadas.id = 'contador-jogadas';
-    pQtdMinJogadas.innerText = 'Movimentos efetuados: 0';
-    document.body.appendChild(pContadorJogadas);
-    document.body.appendChild(pQtdMinJogadas);
-    const resetButton = document.createElement('button');
-        resetButton.innerHTML = 'Reset';
-        document.body.appendChild(resetButton);
-        resetButton.addEventListener("click", reset);
-    for(let i = numeroDeBlocos; i > 0 ; i--) {
-        let blocos = document.createElement('span');
-        blocos.id = `bloco${i}`;
-        primeiraTorre.appendChild(blocos);
-    }
-    if (numeroDeBlocos == 3){
-        pContadorJogadas.innerHTML = 'Quantidade mínima de movimentos: 7';
-    }else if (numeroDeBlocos == 4){
-        pContadorJogadas.innerHTML = 'Quantidade mínima de movimentos: 15';
-    }else if (numeroDeBlocos == 5){
-        pContadorJogadas.innerHTML = 'Quantidade mínima de movimentos: 31';
-    }
+
+
+        if (numeroDeBlocos == 3){
+            pContadorJogadas.innerHTML = 'Quantidade mínima de movimentos: 7';
+        }else if (numeroDeBlocos == 4){
+            pContadorJogadas.innerHTML = 'Quantidade mínima de movimentos: 15';
+        }else if (numeroDeBlocos == 5){
+            pContadorJogadas.innerHTML = 'Quantidade mínima de movimentos: 31';
+        }
+
+        for(let i = numeroDeBlocos; i > 0 ; i--) {
+           
+            let  blocos = document.createElement('span');
+             blocos.id = `bloco${i}`;
+             primeiraTorre.appendChild(blocos);
+             
+           
+        
+         }
+ 
+         const pQtdMinJogadas = document.createElement('p');
+         pQtdMinJogadas.id = 'contador-jogadas';
+         pQtdMinJogadas.innerText = 'Movimentos efetuados: 0';
+         document.body.appendChild(pContadorJogadas);
+         document.body.appendChild(pQtdMinJogadas);
+         const resetButton = document.createElement('button');
+             resetButton.innerHTML = 'Reset';
+             document.body.appendChild(resetButton);
+             resetButton.addEventListener("click", function(){
+                 resetButton.classList.add('none');
+                 pContadorJogadas.classList.add('none');
+                 pQtdMinJogadas.classList.add('none');
+                 pQtdMinJogadas.classList.add('none');
+             
+                 sectionContainer.classList.remove('flex');
+                 sectionContainer2.classList.remove('flex');
+                 sectionContainer3.classList.remove('flex');
+
+                     const remover = sectionContainer.lastChild
+                     const remover2 = sectionContainer2.lastChild
+                     const remover3 = sectionContainer3.lastChild
+                    const tudo = remover.children;
+                    remover.removeChild(tudo[2])
+                    remover.removeChild(tudo[1])
+                    remover.removeChild(tudo[0])
+                  
+                
+                     sectionContainer2.removeChild(remover2)
+                     sectionContainer3.removeChild(remover3)
+                     selecaodejogos();
+                  
+                  
+     
+             });
 }
 
+function resete(){
+    
+}
 let blocoSelecionado = "";
 let counter = 0;
 function capturarBlocos(event) {
@@ -89,6 +125,7 @@ function capturarTorres(event) {
     }
 }
 const torre1 = document.querySelector('#toco1');
+
 torre1.addEventListener('click', capturarTorres);
 const torre2 = document.querySelector('#toco2');
 torre2.addEventListener('click', capturarTorres);
@@ -129,12 +166,6 @@ console.log("dentro: "+event.target)
     }
 }
 
-function popupvitoria(){
-    const vitoria = document.createElement('p');
-   vitoria.innerHTML = 'Parabéns você venceu!';
-    document.body.appendChild(vitoria);
-}
-
 function selecaodejogos(){
     const butoes = document.createElement('div');
     butoes.classList.add('menu');
@@ -172,8 +203,15 @@ function selecaodejogos(){
         hardButton.classList.add('none');
         
         criarBlocos(event.target.id);
+             
+        if (contador >= 1){
+            criarToco();
+        }
+        contador++
+        
         //musica.play()
     }
+   
 }
 selecaodejogos()
 function popupvitoria(){
@@ -183,12 +221,3 @@ function popupvitoria(){
     win.play()
     document.body.appendChild(vitoria);
 }
-
-function reset(){
-    const main = document.querySelector('.container');
-    main.style.display = 'none';
-    criarEstruturaHTML();
-    criarToco();
-    selecaodejogos();
-}
-
