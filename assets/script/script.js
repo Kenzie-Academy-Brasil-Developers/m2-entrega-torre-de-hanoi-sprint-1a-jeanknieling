@@ -9,8 +9,7 @@ function criarEstruturaHTML() {
     section3.classList.add('sectionContainer3');
     const h1 = document.createElement('h1');
     h1.innerHTML = 'Torre de Hanói';
-    
-    
+
     main.appendChild(section);
     main.appendChild(section2);
     main.appendChild(section3);
@@ -115,20 +114,13 @@ function resete(){
     
 }
 let blocoSelecionado = "";
-let counter = 0;
-function capturarBlocos(event) {
-    blocoSelecionado = event.currentTarget.querySelector('div').lastElementChild;
-}
-sectionContainer.addEventListener('click', capturarBlocos);
-sectionContainer2.addEventListener('click', capturarBlocos);
-sectionContainer3.addEventListener('click', capturarBlocos);
-let torreSelecionada = "";
+
 function capturarTorres(event) {
-   
-    if(event.target.tagName === "DIV" && blocoSelecionado !== "") {
-        torreSelecionada = event.target;
-        moveBlocos();
-        verificarVitoria(event);
+    
+    if(event.target.tagName === "DIV"){
+        toco = event.target;
+        moveBlocos(toco);
+        verificarVitoria(event, dificuldade);
     }
 }
 const torre1 = document.querySelector('#toco1');
@@ -138,34 +130,46 @@ const torre2 = document.querySelector('#toco2');
 torre2.addEventListener('click', capturarTorres);
 const torre3 = document.querySelector('#toco3');
 torre3.addEventListener('click', capturarTorres);
+
 let movimentos = 0;
-function moveBlocos() {
-    
-    if(torreSelecionada.lastElementChild === null || torreSelecionada.lastElementChild.clientWidth > blocoSelecionado.clientWidth) {
-        torreSelecionada.appendChild(blocoSelecionado);
-        torreSelecionada.lastElementChild.classList.remove("keyframes")
-        torreSelecionada.lastElementChild.style.backgroundColor = "green";
-        //console.log(blocoSelecionado)
-       // blocoSelecionado.classList.remove("keyframes")
+function moveBlocos(toco) {
+    const torreAtual = toco;
+
+    if(blocoSelecionado === "") {
+        blocoSelecionado = toco.lastElementChild;
+        if(blocoSelecionado.id === 'bloco1') {
+            blocoSelecionado.classList.add('keyframes');
+        } else if(blocoSelecionado.id === 'bloco2') {
+            blocoSelecionado.classList.add('keyframes2');
+        } else if(blocoSelecionado.id === 'bloco3') {
+            blocoSelecionado.classList.add('keyframes3');
+        } else if(blocoSelecionado.id === 'bloco4') {
+            blocoSelecionado.classList.add('keyframes4');
+        } else {
+            blocoSelecionado.classList.add('keyframes5');
+        }
+    } else if(torreAtual.lastElementChild === null || torreAtual.lastElementChild.clientWidth > blocoSelecionado.clientWidth) {
+        torreAtual.appendChild(blocoSelecionado);
+        blocoSelecionado.className = "";
+        blocoSelecionado = "";
         contarMovimentos();
     } else {
         erro.play();
+        blocoSelecionado.className = "";
+        blocoSelecionado = "";
     }
 }
 function contarMovimentos() {
     movimentos++;
     const pContadorMovimentos = document.querySelector('#contador-jogadas');
     pContadorMovimentos.innerHTML = `Movimentos efetuados: ${movimentos}`;
+
 }
 
-//console.log(event.target)
-function verificarVitoria(event, numeroBlocos) {
-console.log("dentro: "+event.target)
+function verificarVitoria(event, dificuldade) {
 
     const contaElementosNaTorre = event.currentTarget.childElementCount;
-    console.log(contaElementosNaTorre === 3 && (event.currentTarget.id === 'toco2' || event.currentTarget.id === 'toco3'))
-    console.log(contaElementosNaTorre)
-    if(contaElementosNaTorre === 3 && (event.currentTarget.id === 'toco2' || event.currentTarget.id === 'toco3')) {
+    if(contaElementosNaTorre === dificuldade && (event.currentTarget.id === 'toco2' || event.currentTarget.id === 'toco3')) {
         popupvitoria();
         
        // if (contador===1){
@@ -218,6 +222,7 @@ function selecaodejogos(){
              
        
         
+        dificuldade = parseInt(event.target.id);
         //musica.play()
     }
    
