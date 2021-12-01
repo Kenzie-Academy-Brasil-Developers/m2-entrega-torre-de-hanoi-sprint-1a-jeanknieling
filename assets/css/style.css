@@ -62,7 +62,7 @@ p{
     border: 1px solid rgb(255, 255, 255);
     display: block;
     background-color: red;
-    width: 22px;
+    width: 30px;
     height: 20px;
     border-radius: 6px;
 }
@@ -70,15 +70,15 @@ p{
     animation: change 1s infinite;
 }
 @keyframes change {
-    0% { width: 20px; }
+    0% { width: 30px; }
     50% {  width: 25px; }
-    100% {  width: 20px; }
+    100% {  width: 30px; }
 }
 #bloco2 {
     border: 1px solid rgb(255, 255, 255);
     display: block;
     background-color: blue;
-    width: 40px;
+    width: 50px;
     height: 20px;
     border-radius: 8px;
 }
@@ -86,15 +86,15 @@ p{
     animation: change2 1s infinite;
 }
 @keyframes change2 {
-    0% { width: 40px; }
+    0% { width: 50px; }
     50% {  width: 45px; }
-    100% {  width: 40px; }
+    100% {  width: 50px; }
 }
 #bloco3 {
     border: 1px solid rgb(255, 255, 255);
     display: block;
     background-color: yellowgreen;
-    width: 60px;
+    width: 70px;
     height: 20px;
     border-radius: 8px;
 }
@@ -102,15 +102,15 @@ p{
     animation: change3 1s infinite;
 }
 @keyframes change3 {
-    0% { width: 60px; }
+    0% { width: 70px; }
     50% {  width: 65px; }
-    100% {  width: 60px; }
+    100% {  width: 70px; }
 }
 #bloco4 {
     border: 1px solid rgb(255, 255, 255);
     display: block;
     background-color: purple;
-    width: 80px;
+    width: 85px;
     height: 20px;
     border-radius: 8px;
 }
@@ -118,9 +118,9 @@ p{
     animation: change4 1s infinite;
 }
 @keyframes change4 {
-    0% { width: 80px; }
-    50% {  width: 85px; }
-    100% {  width: 80px; }
+    0% { width: 85px; }
+    50% {  width: 80px; }
+    100% {  width: 85px; }
 }
 #bloco5 {
     border: 1px solid rgb(255, 255, 255);
@@ -135,24 +135,24 @@ p{
 }
 @keyframes change5 {
     0% { width: 100px; }
-    50% {  width: 105px; }
+    50% {  width: 95px; }
     100% {  width: 100px; }
 }
 #bloco1, #bloco2, #bloco3, #bloco4, #bloco5 {
     z-index: 1;
 }
 #toco1{
-    width: 10px;
+    width: 15px;
     height: 130px;
     background-color: rgb(114, 67, 5);
 }
 #toco2{
-    width: 10px;
+    width: 15px;
     height: 130px;
     background-color: rgb(114, 67, 5);
 }
 #toco3{
-    width: 10px;
+    width: 15px;
     height: 130px;
     background-color: rgb(114, 67, 5);
    
@@ -179,9 +179,8 @@ button:hover{
 }
 @media (min-width: 600px) {
     main{
-        width: 800px;
+        width: 600px;
         height: 300px;
-        
     }
     .texto{
         flex-direction: column;
@@ -195,5 +194,11 @@ button:hover{
     }
     .menu button{
         margin: 10px;
+    }
+}
+
+@media (min-width: 1024px) {
+    main{
+        width: 800px;
     }
 }
