@@ -70,7 +70,7 @@ function criarBlocos(numeroDeBlocos) {
                  pContadorJogadas.classList.add('none');
                  pQtdMinJogadas.classList.add('none');
                  pQtdMinJogadas.classList.add('none');
-             
+                 vitoria.innerHTML = '';
                  sectionContainer.classList.remove('flex');
                  sectionContainer2.classList.remove('flex');
                  sectionContainer3.classList.remove('flex');
@@ -101,7 +101,12 @@ function criarBlocos(numeroDeBlocos) {
                      
                        
                       }
+                     
                      selecaodejogos();
+                        //TENTANDO ADDS OS EVENTOS   DOS CAPTURAS
+                    torre1.addEventListener('click', capturarTorres);
+                    torre2.addremoveEventListener('click', capturarTorres);
+                     torre3.addremoveEventListener('click', capturarTorres);
                    });
 }
 
@@ -161,7 +166,8 @@ console.log("dentro: "+event.target)
     console.log(contaElementosNaTorre)
     if(contaElementosNaTorre === 3 && (event.currentTarget.id === 'toco2' || event.currentTarget.id === 'toco3')) {
         popupvitoria();
-        console.log(torre1.removeEventListener('click', capturarTorres));
+        
+       torre1.removeEventListener('click', capturarTorres);
         torre2.removeEventListener('click', capturarTorres);
         torre3.removeEventListener('click', capturarTorres);
     }
@@ -212,9 +218,10 @@ function selecaodejogos(){
    
 }
 selecaodejogos()
+const vitoria = document.createElement('p');
 function popupvitoria(){
     const main = document.querySelector('.container');
-    const vitoria = document.createElement('p');
+    
     vitoria.innerHTML = 'Parabéns você venceu!';
     win.play()
     document.body.appendChild(vitoria);
