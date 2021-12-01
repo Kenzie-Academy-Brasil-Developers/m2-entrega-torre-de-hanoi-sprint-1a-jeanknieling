@@ -78,19 +78,31 @@ function criarBlocos(numeroDeBlocos) {
                      const remover = sectionContainer.lastChild
                      const remover2 = sectionContainer2.lastChild
                      const remover3 = sectionContainer3.lastChild
-                    const tudo = remover.children;
-                    remover.removeChild(tudo[2])
-                    remover.removeChild(tudo[1])
-                    remover.removeChild(tudo[0])
-                  
-                
-                     sectionContainer2.removeChild(remover2)
-                     sectionContainer3.removeChild(remover3)
+                     const removendo = sectionContainer.children;
+                     const filho = remover.children  
+                     const filho2 = remover2.children  
+                     const filho3 = remover3.children  
+   
+                     for (let i=numeroDeBlocos; i>=0; i--){
+                       if(filho[i]!== undefined)
+                        remover.removeChild(filho[i])
+                    
+                      
+                     }
+                     for (let i=numeroDeBlocos; i>=0; i--){
+                        if(filho2[i]!== undefined)
+                         remover2.removeChild(filho2[i])
+                     
+                       
+                      }
+                      for (let i=numeroDeBlocos; i>=0; i--){
+                        if(filho3[i]!== undefined)
+                         remover3.removeChild(filho3[i])
+                     
+                       
+                      }
                      selecaodejogos();
-                  
-                  
-     
-             });
+                   });
 }
 
 function resete(){
@@ -100,17 +112,6 @@ let blocoSelecionado = "";
 let counter = 0;
 function capturarBlocos(event) {
     blocoSelecionado = event.currentTarget.querySelector('div').lastElementChild;
-    const efeitoMover = blocoSelecionado.id;
-   if(blocoSelecionado.class !== ""){
-        if ( efeitoMover === "bloco1"){
-        blocoSelecionado.classList.toggle("keyframes");
-       
-   }else{
-        blocoSelecionado.classList.remove("keyframes");
-   }
-   counter++;
-   console.log(counter);
-}
 }
 sectionContainer.addEventListener('click', capturarBlocos);
 sectionContainer2.addEventListener('click', capturarBlocos);
@@ -204,10 +205,7 @@ function selecaodejogos(){
         
         criarBlocos(event.target.id);
              
-        if (contador >= 1){
-            criarToco();
-        }
-        contador++
+       
         
         //musica.play()
     }
