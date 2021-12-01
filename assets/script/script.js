@@ -213,7 +213,7 @@ function selecaodejogos() {
 
     criarBlocos(event.target.id);
     dificuldade = parseInt(event.target.id);
-    //musica.play()
+    musica.play()
   }
 }
 selecaodejogos();
